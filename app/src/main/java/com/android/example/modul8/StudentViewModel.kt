@@ -25,6 +25,7 @@ class StudentViewModel : ViewModel() {
             "id" to student.id,
             "name" to student.name,
             "program" to student.program
+            "phones" to student.phones
         )
         db.collection("students")
             .add(studentMap)
@@ -46,6 +47,7 @@ class StudentViewModel : ViewModel() {
                     val id = document.getString("id") ?: ""
                     val name = document.getString("name") ?: ""
                     val program = document.getString("program") ?: ""
+                    val phones = document.get("Phones") as? List<String> ?: emptyList()
                     list.add(Student(id, name, program))
                 }
                 students = list
